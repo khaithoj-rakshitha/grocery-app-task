@@ -26,9 +26,7 @@ if (loginBtn) {
 
 }
 
-// ==========================
 // ACCESS CONTROL
-// ==========================
 
 if (
     window.location.pathname.includes("index.html") ||
@@ -44,9 +42,7 @@ if (
     }
 
 }
-// ==========================
 // DISPLAY LOGGED USER
-// ==========================
 
 const loggedUserSpan = document.getElementById("loggedUser");
 
@@ -56,9 +52,7 @@ if (loggedUserSpan) {
         localStorage.getItem("loggedInUser");
 
 }
-// ==========================
 // LOGOUT
-// ==========================
 
 const logoutBtn = document.getElementById("logoutBtn");
 
@@ -333,7 +327,6 @@ const cartCount = document.getElementById("cartCount");
 const totalItems = document.getElementById("totalItems");
 const totalPrice = document.getElementById("totalPrice");
 const cartSummary = document.getElementById("cartSummary");
-const checkoutBtn = document.getElementById("checkoutBtn");
 
 // ADD TO CART
 
@@ -409,10 +402,6 @@ function updateCart(){
 }
 
 // CHECKOUT
-
-// ==========================
-// CHECKOUT
-// ==========================
 
 const checkoutBtn = document.getElementById("checkoutBtn");
 
