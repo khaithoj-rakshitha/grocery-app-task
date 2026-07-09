@@ -164,25 +164,6 @@ function renderCategories(){
 
     });
 
-    const buttons=document.querySelectorAll(".category-btn");
-
-    buttons.forEach(button=>{
-
-        button.addEventListener("click",function(){
-
-            buttons.forEach(btn=>btn.classList.remove("active"));
-
-            this.classList.add("active");
-
-            currentCategory=this.dataset.category;
-
-            displayProducts();
-
-        });
-
-    });
-
-}
 
 // DOM ELEMENTS
 
