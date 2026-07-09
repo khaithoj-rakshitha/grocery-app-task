@@ -70,116 +70,73 @@ if (logoutBtn) {
 
 // PRODUCT DATA
 
-const products = [
-    {
-        id: 1,
-        name: "Apple",
-        category: "Fruits & Vegetables",
-        weight: "1 Kg",
-        price: 120,
-        image: "images/apple.jpg",
-        quantity: 0
-    },
-    {
-        id: 2,
-        name: "Banana",
-        category: "Fruits & Vegetables",
-        weight: "1 Dozen",
-        price: 60,
-        image: "images/banana.jpg",
-        quantity: 0
-    },
-    {
-        id: 3,
-        name: "Tomato",
-        category: "Fruits & Vegetables",
-        weight: "1 Kg",
-        price: 40,
-        image: "images/tomato.jpg",
-        quantity: 0
-    },
-    {
-        id: 4,
-        name: "Milk",
-        category: "Dairy & Eggs",
-        weight: "1 Litre",
-        price: 58,
-        image: "images/milk.png",
-        quantity: 0
-    },
-    {
-        id: 5,
-        name: "Eggs",
-        category: "Dairy & Eggs",
-        weight: "6 Pieces",
-        price: 48,
-        image: "images/eggs.jpg",
-        quantity: 0
-    },
-    {
-        id: 6,
-        name: "Cheese",
-        category: "Dairy & Eggs",
-        weight: "200 g",
-        price: 180,
-        image: "images/cheese.jpg",
-        quantity: 0
-    },
-    {
-        id: 7,
-        name: "Potato Chips",
-        category: "Snacks",
-        weight: "100 g",
-        price: 35,
-        image: "images/chips.jpg",
-        quantity: 0
-    },
-    {
-        id: 8,
-        name: "Biscuits",
-        category: "Snacks",
-        weight: "250 g",
-        price: 40,
-        image: "images/biscuits.jpg",
-        quantity: 0
-    },
-    {
-        id: 9,
-        name: "Orange Juice",
-        category: "Beverages",
-        weight: "1 Litre",
-        price: 120,
-        image: "images/juice.jpg",
-        quantity: 0
-    },
-    {
-        id: 10,
-        name: "Soft Drink",
-        category: "Beverages",
-        weight: "750 ml",
-        price: 90,
-        image: "images/softdrinks.jpg",
-        quantity: 0
-    },
-    {
-        id: 11,
-        name: "Bread",
-        category: "Bakery",
-        weight: "400 g",
-        price: 45,
-        image: "images/bread.jpg",
-        quantity: 0
-    },
-    {
-        id: 12,
-        name: "Shampoo",
-        category: "Personal Care",
-        weight: "340 ml",
-        price: 220,
-        image: "images/shampoo.jpg",
-        quantity: 0
+let products = [];
+// LOAD PRODUCTS FROM API
+
+async function loadProducts() {
+
+    showLoading();
+
+    try {
+
+        const response = await fetch("https://fakestoreapi.com/products");
+
+        products = await response.json();
+
+        products.forEach(product => {
+
+            product.quantity = 0;
+
+        });
+
+        hideLoading();
+
+        renderCategories();
+
+        displayProducts();
+
     }
-];
+
+    catch (error) {
+
+        hideLoading();
+
+        showError();
+
+    }
+
+}
+// SHOW LOADING
+
+function showLoading(){
+
+    document.getElementById("loading").style.display="block";
+
+    productGrid.style.display="none";
+
+    document.getElementById("errorMessage").style.display="none";
+
+}
+
+// HIDE LOADING
+
+function hideLoading(){
+
+    document.getElementById("loading").style.display="none";
+
+    productGrid.style.display="grid";
+
+}
+
+// SHOW ERROR
+
+function showError(){
+
+    document.getElementById("errorMessage").style.display="block";
+
+    productGrid.style.display="none";
+
+}
 
 
 // DOM ELEMENTS
@@ -316,11 +273,6 @@ categoryButtons.forEach(button=>{
     });
 
 });
-
-// Initial Load
-
-displayProducts();
-
 // CART ELEMENTS
 
 const cartCount = document.getElementById("cartCount");
@@ -476,6 +428,7 @@ setTimeout(function(){
 
 updateCart();
 
+loadProducts();
 // ORDER HISTORY
 
 const ordersContainer = document.getElementById("ordersContainer");
