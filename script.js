@@ -137,7 +137,52 @@ function showError(){
     productGrid.style.display="none";
 
 }
+// RENDER CATEGORIES
 
+function renderCategories(){
+
+    const categorySection = document.getElementById("categorySection");
+
+    categorySection.innerHTML="";
+
+    categorySection.innerHTML += `
+        <button class="category-btn active" data-category="All">
+            All
+        </button>
+    `;
+
+    const categories = [...new Set(products.map(product => product.category))];
+
+    categories.forEach(category=>{
+
+        categorySection.innerHTML += `
+            <button class="category-btn"
+                data-category="${category}">
+                ${category}
+            </button>
+        `;
+
+    });
+
+    const buttons=document.querySelectorAll(".category-btn");
+
+    buttons.forEach(button=>{
+
+        button.addEventListener("click",function(){
+
+            buttons.forEach(btn=>btn.classList.remove("active"));
+
+            this.classList.add("active");
+
+            currentCategory=this.dataset.category;
+
+            displayProducts();
+
+        });
+
+    });
+
+}
 
 // DOM ELEMENTS
 
@@ -163,7 +208,7 @@ function displayProducts() {
             product.category === currentCategory;
 
         let searchMatch =
-            product.name.toLowerCase().includes(searchText.toLowerCase());
+product.title.toLowerCase().includes(searchText.toLowerCase());
 
         return categoryMatch && searchMatch;
 
@@ -190,13 +235,24 @@ function displayProducts() {
 
             <div class="product-info">
 
-                <h3>${product.name}</h3>
+               <h3>
+${product.title.split(" ").slice(0,4).join(" ")}
+</h3>
 
-                <p class="weight">${product.weight}</p>
+                <p class="weight">
+
+${product.category}
+
+</p>
 
                 <div class="price-row">
 
-                    <span class="price">₹${product.price}</span>
+                    <span class="price">$${product.price}</span>
+                    <p class="rating">
+
+★ ${product.rating.rate}
+
+</p>
 
                     ${
                         product.quantity === 0
@@ -375,7 +431,7 @@ if (checkoutBtn) {
 
             items: cartItems.map(product => ({
 
-                name: product.name,
+                name: product.title,
 
                 quantity: product.quantity,
 
