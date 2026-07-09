@@ -686,3 +686,43 @@ body{
     z-index:2000;
 
 }
+/* LOADING */
+
+.loading{
+
+    display:none;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    color:#16a34a;
+    padding:40px;
+
+}
+
+/* ERROR */
+
+.error-message{
+
+    display:none;
+    text-align:center;
+    color:red;
+    border:2px solid red;
+    background:#ffe5e5;
+    padding:20px;
+    margin:20px;
+    border-radius:10px;
+    font-size:18px;
+
+}
+
+/* RATING */
+
+.rating{
+
+    margin-top:8px;
+    color:#f59e0b;
+    font-size:15px;
+    font-weight:600;
+
+}
+
