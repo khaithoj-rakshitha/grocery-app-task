@@ -37,7 +37,7 @@ if (
 
     if (!loggedUser) {
 
-        window.location.href = "index.html";
+        window.location.href = "login.html";
 
     }
 
@@ -62,7 +62,7 @@ if (logoutBtn) {
 
         localStorage.removeItem("loggedInUser");
 
-        window.location.href = "index.html";
+        window.location.href = "login.html";
 
     });
 
