@@ -29,7 +29,7 @@ if (loginBtn) {
 // ACCESS CONTROL
 
 if (
-    window.location.pathname.includes("index.html") ||
+    window.location.pathname.includes("grocery-app-task") ||
     window.location.pathname.includes("orders.html")
 ) {
 
@@ -71,6 +71,13 @@ if (logoutBtn) {
 // PRODUCT DATA
 
 let products = [];
+// DOM ELEMENTS
+
+
+const productGrid = document.getElementById("productGrid");
+const searchInput = document.getElementById("searchInput");
+const noProducts = document.getElementById("noProducts");
+
 // LOAD PRODUCTS FROM API
 
 async function loadProducts() {
@@ -183,12 +190,6 @@ function renderCategories() {
 
 }
 
-// DOM ELEMENTS
-
-
-const productGrid = document.getElementById("productGrid");
-const searchInput = document.getElementById("searchInput");
-const noProducts = document.getElementById("noProducts");
 
 let currentCategory = "All";
 let searchText = "";
@@ -296,13 +297,17 @@ ${product.category}
 // SEARCH
 
 
-searchInput.addEventListener("input", function(){
+if(searchInput){
 
-    searchText = this.value;
+    searchInput.addEventListener("input", function(){
 
-    displayProducts();
+        searchText = this.value;
 
-});
+        displayProducts();
+
+    });
+
+}
 
 
 
