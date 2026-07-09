@@ -20,7 +20,7 @@ if (loginBtn) {
 
         localStorage.setItem("loggedInUser", email);
 
-        window.location.href = "shop.html";
+        window.location.href = "index.html";
 
     });
 
@@ -29,7 +29,7 @@ if (loginBtn) {
 // ACCESS CONTROL
 
 if (
-    window.location.pathname.includes("shop.html") ||
+    window.location.pathname.includes("index.html") ||
     window.location.pathname.includes("orders.html")
 ) {
 
