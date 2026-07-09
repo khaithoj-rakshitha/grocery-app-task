@@ -20,7 +20,7 @@ if (loginBtn) {
 
         localStorage.setItem("loggedInUser", email);
 
-        window.location.href = "index.html";
+        window.location.href = "shop.html";
 
     });
 
@@ -29,7 +29,7 @@ if (loginBtn) {
 // ACCESS CONTROL
 
 if (
-    window.location.pathname.includes("index.html") ||
+    window.location.pathname.includes("shop.html") ||
     window.location.pathname.includes("orders.html")
 ) {
 
@@ -37,7 +37,7 @@ if (
 
     if (!loggedUser) {
 
-        window.location.href = "login.html";
+        window.location.href = "index.html";
 
     }
 
@@ -62,7 +62,7 @@ if (logoutBtn) {
 
         localStorage.removeItem("loggedInUser");
 
-        window.location.href = "login.html";
+        window.location.href = "index.html";
 
     });
 
