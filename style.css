@@ -668,4 +668,21 @@ body{
         gap:5px;
     }
 }
+/* SUCCESS MESSAGE */
 
+.success-message{
+
+    display:none;
+    position:fixed;
+    bottom:90px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#16a34a;
+    color:#fff;
+    padding:15px 30px;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:600;
+    z-index:2000;
+
+}
