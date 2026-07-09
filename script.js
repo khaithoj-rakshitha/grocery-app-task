@@ -189,7 +189,6 @@ function renderCategories(){
 
 const productGrid = document.getElementById("productGrid");
 const searchInput = document.getElementById("searchInput");
-const categoryButtons = document.querySelectorAll(".category-btn");
 const noProducts = document.getElementById("noProducts");
 
 let currentCategory = "All";
@@ -231,7 +230,7 @@ product.title.toLowerCase().includes(searchText.toLowerCase());
 
         <div class="product-card">
 
-            <img src="${product.image}" alt="${product.name}">
+            <img src="${product.image}" alt="${product.title}">
 
             <div class="product-info">
 
@@ -307,28 +306,7 @@ searchInput.addEventListener("input", function(){
 });
 
 
-// CATEGORY FILTER
 
-
-categoryButtons.forEach(button=>{
-
-    button.addEventListener("click",function(){
-
-        categoryButtons.forEach(btn=>{
-
-            btn.classList.remove("active");
-
-        });
-
-        this.classList.add("active");
-
-        currentCategory = this.dataset.category;
-
-        displayProducts();
-
-    });
-
-});
 // CART ELEMENTS
 
 const cartCount = document.getElementById("cartCount");
@@ -521,7 +499,7 @@ if (ordersContainer) {
 
                         <span>
 
-                            ₹${item.price}
+                           $${item.price}
 
                         </span>
 
@@ -555,7 +533,7 @@ if (ordersContainer) {
 
                         <strong>Total:</strong>
 
-                        ₹${order.total}
+                        $${order.total}
 
                     </p>
 
