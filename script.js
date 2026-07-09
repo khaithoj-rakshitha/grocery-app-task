@@ -139,11 +139,11 @@ function showError(){
 }
 // RENDER CATEGORIES
 
-function renderCategories(){
+function renderCategories() {
 
     const categorySection = document.getElementById("categorySection");
 
-    categorySection.innerHTML="";
+    categorySection.innerHTML = "";
 
     categorySection.innerHTML += `
         <button class="category-btn active" data-category="All">
@@ -153,17 +153,35 @@ function renderCategories(){
 
     const categories = [...new Set(products.map(product => product.category))];
 
-    categories.forEach(category=>{
+    categories.forEach(category => {
 
         categorySection.innerHTML += `
-            <button class="category-btn"
-                data-category="${category}">
+            <button class="category-btn" data-category="${category}">
                 ${category}
             </button>
         `;
 
     });
 
+    const buttons = document.querySelectorAll(".category-btn");
+
+    buttons.forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            buttons.forEach(btn => btn.classList.remove("active"));
+
+            this.classList.add("active");
+
+            currentCategory = this.dataset.category;
+
+            displayProducts();
+
+        });
+
+    });
+
+}
 
 // DOM ELEMENTS
 
