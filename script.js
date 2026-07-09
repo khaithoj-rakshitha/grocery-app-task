@@ -79,7 +79,7 @@ async function loadProducts() {
 
     try {
 
-        const response = await fetch("https://fakestoreapi.com/productssss");
+        const response = await fetch("https://fakestoreapi.com/products");
 
         products = await response.json();
 
